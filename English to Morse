@@ -1,0 +1,58 @@
+Programi qe kodon tekstin e shkruar ne kodin mors:
+#include <iostream>
+#include <string>//per perfshirjen e stringjeve
+#include <cctype>//per funksionin toupper qe eshte pjese e kesaj librarie
+   using namespace std;
+
+string AnglishtMors (string, string[]);//fuksioni qe kodon tekstin ne kodin mors
+
+
+int main ()
+{
+string  morse[] = {".-", "-...", "-.-.", "-..", ".", "..-.",
+
+"--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-",
+
+".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};//
+
+string teksti = "";
+string morsecode;
+char perserit='y';
+
+while (perserit=='y')
+{
+
+cout << "Vendosni nje tekst per te perkthyer ";
+
+std::getline(std::cin,teksti);//vendos inputin standard tek stringu tekst
+
+cout << "Teksti: " << teksti << endl;
+cout << "Kodi MorsE: " << AnglishtMors(teksti, morse) << endl;
+cout << "Deshironi te vazhdoni? Shtypni y per te vazhduar.Nese jo shtypni butonin exit";
+cin >> perserit;}
+return 0;
+}
+
+string AnglishtMors (string teksti, string morse[])
+{
+
+string morseValue;
+string HapesiraMesShkronjave= " ";
+string HapesiraMesFjaleve = "  ";//2 hapesira sepse hapesiren tjeter e shtojme me  HapesiraMesShkronjave
+
+for (int k=0; teksti[k]; k++)
+{   if (teksti[k]!= ' ')
+
+{   teksti[k]=toupper(teksti[k]); //toupper eshte funksion standard qe kthen lowercases ne uppercases
+
+morseValue=HapesiraMesShkronjave+=morse[teksti[k]-'A']+" ";//A eshte vlera e pare e vektorit , duke zbritur ate perfitojme shkronjat korrekte per kodin mors 
+}
+
+if (teksti[k]==' ')
+{
+HapesiraMesShkronjave+=HapesiraMesFjaleve;//shton 3 hapesira kur has ne nje hapesire midis fjaleve
+}
+}
+return morseValue;
+}
+
