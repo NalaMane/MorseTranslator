@@ -1,0 +1,65 @@
+ #include <iostream>
+ #include <string>
+ #include <sstream>
+using namespace std;
+
+string KtheNeAnglisht(std::string morse, std::string const morseCode[]);//funksioni qe konverton frazen nga kodi mors ne anglisht
+ int main()
+
+{
+
+string input = "";
+
+cout << "Ju lutem vendosni kodin mors ";
+
+getline(std::cin, input);//vendos inputin tek string input
+
+
+string const morseCode[] = {".-", "-...", "-.-.", "-..", ".", "..-.",
+
+"--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-",
+
+".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};//vektori qe permban simbolet e kodit mors
+
+cout << KtheNeAnglisht(input, morseCode) << endl;
+
+return 0;
+
+}
+
+
+
+string KtheNeAnglisht(string morse, string const morseCode[])
+
+{
+
+string output = "";
+
+string ShkronjaAktuale = "";
+
+istringstream ss(morse);
+
+
+
+size_t const characters = 26;
+
+
+
+while(ss >> ShkronjaAktuale)
+
+{
+
+size_t index = 0;
+
+while(ShkronjaAktuale != morseCode[index] && index < characters)
+
+{   ++index; 
+
+}
+output += 'A' + index;
+}
+return output;
+}
+
+
+
